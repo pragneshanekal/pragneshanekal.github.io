@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pragnesh Anekal - Data Engineer & AI Enthusiast</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0e27;
+            --bg-card: #1a1f3a;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --border-color: #2d3548;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+            padding: 4rem 0 3rem;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(26, 31, 58, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+            animation: fadeIn 0.8s ease;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        .card-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .card-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-blue);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            margin: 0.3rem;
+            font-size: 0.9rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        /* Projects */
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--accent-purple);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent-purple);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .card-header {
+                flex-direction: column;
+            }
+
+            .card-date {
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container hero">
+            <h1>Pragnesh Anekal</h1>
+            <p class="subtitle">Data Engineer | AI Systems Builder | Graduate Student at Northeastern</p>
+            <div class="contact-info">
+                <a href="mailto:pragneshanekal@gmail.com" class="contact-item">
+                    <span>📧</span> pragneshanekal@gmail.com
+                </a>
+                <a href="tel:+16173961388" class="contact-item">
+                    <span>📱</span> +1-617-396-1388
+                </a>
+                <a href="https://linkedin.com/in/pragnesh-anekal" target="_blank" class="contact-item">
+                    <span>💼</span> LinkedIn
+                </a>
+                <a href="https://github.com/pragneshanekal" target="_blank" class="contact-item">
+                    <span>💻</span> GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section id="experience">
+            <h2>Experience</h2>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Data Engineer</div>
+                        <div class="card-subtitle">Staples · Framingham, MA</div>
+                    </div>
+                    <div class="card-date">Jan 2025 – Jul 2025</div>
+                </div>
+                <ul>
+                    <li>Engineered end-to-end batch pipelines in Databricks using PySpark, transforming over 10TB of raw data into partitioned Parquet files, enabling 40% faster querying and 25% reduced storage costs</li>
+                    <li>Built attribution pipelines to match website ad impressions and clicks to sales transactions, processing 50M+ events daily across 15+ marketing channels</li>
+                    <li>Implemented reprocessing workflows for late-arriving data, maintaining 99.5% data accuracy across historical datasets using Delta Lake and Databricks Workflows</li>
+                    <li>Optimized PySpark transformation logic using broadcast joins, repartitioning, and caching strategies, improving workflow performance by 30% and reducing cluster compute costs by 20%</li>
+                    <li>Maintained SCD-2 dimension tables in Snowflake with effective versioning logic and atomic upserts, ensuring accurate historical reporting and resilience to schema drift</li>
+                    <li>Implemented robust data quality checks achieving 99% pipeline uptime and reducing data discrepancies by 85%</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Graduate Teaching Assistant</div>
+                        <div class="card-subtitle">Northeastern University · Boston, MA</div>
+                    </div>
+                    <div class="card-date">Sep 2024 – Present</div>
+                </div>
+                <ul>
+                    <li><strong>Big Data, Intelligence & Analytics:</strong> Designed and delivered lab sessions on LangGraph multi-agent systems, RAG pipeline optimization, performance evaluation (MRR@K, Recall), and version control for AI projects, guiding 30+ students</li>
+                    <li><strong>Data Management & Database Design:</strong> Guided 70+ students in mastering SQL, designing normalized data models, dimensional modeling, and database optimization techniques</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Data Engineer</div>
+                        <div class="card-subtitle">ReVx Energy · Bangalore, India</div>
+                    </div>
+                    <div class="card-date">Aug 2021 – Sep 2022</div>
+                </div>
+                <ul>
+                    <li>Modeled relational databases to streamline management of vehicle telemetry, fleet operations, and driver information, improving data consistency by 40% and reducing query response time by 35%</li>
+                    <li>Ingested battery data from 100+ EVs via IoT devices streaming CSVs to S3, automating loading into Redshift tables to enable real-time analytics, processing 5M+ records daily</li>
+                    <li>Designed dimensional models for fleet analytics, creating star schemas that reduced reporting query time by 50% and supported 10+ analytical dashboards</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Software Engineer</div>
+                        <div class="card-subtitle">Datasol Innovative Labs · Bangalore, India</div>
+                    </div>
+                    <div class="card-date">May 2020 – Jun 2021</div>
+                </div>
+                <ul>
+                    <li>Managed ETL pipelines to ensure data consistency from airline cockpit data, processing 200+ data points across 50+ aircraft, resulting in 95% data quality improvement</li>
+                    <li>Implemented task scheduling techniques utilizing multi-threading methodologies, optimizing execution efficiency by 30% and reducing processing latency by 25%</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">RAG System for Financial Documentation (AURELIA)</div>
+                    </div>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    Built a production-grade RAG system processing 500+ pages of MATLAB Financial Toolbox documentation. Implemented advanced PDF parsing with Docling and metadata extraction using Instructor, achieving 2.59 seconds per page processing time. Integrated semantic caching that reduced response time by 85% with 92% cache hit rate across 1000+ Q&A pairs. The system uses Apache Airflow for orchestration, OpenAI embeddings for vectorization, Pinecone for vector storage, and FastAPI with Wikipedia fallback capabilities.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Apache Airflow</span>
+                    <span class="tech-tag">OpenAI API</span>
+                    <span class="tech-tag">Pinecone</span>
+                    <span class="tech-tag">FastAPI</span>
+                    <span class="tech-tag">Docling</span>
+                    <span class="tech-tag">Streamlit</span>
+                    <span class="tech-tag">Docker</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">MCP Server Integration Suite</div>
+                    </div>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    Developed multiple Model Context Protocol (MCP) servers for personal productivity automation integrated with Claude Desktop. Built automated expense tracking system connecting Chase bank emails with Notion databases and Splitwise for shared expense management. Created macOS Calendar integration with sophisticated scheduling logic for intelligent meeting management. Implemented iMessage functionality with human-in-the-loop approval workflows for safe automated messaging. All servers feature robust error handling, comprehensive logging, and seamless integration patterns.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">MCP Protocol</span>
+                    <span class="tech-tag">Notion API</span>
+                    <span class="tech-tag">Gmail API</span>
+                    <span class="tech-tag">Splitwise API</span>
+                    <span class="tech-tag">macOS Calendar</span>
+                    <span class="tech-tag">iMessage</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">Job Application Automation System</div>
+                    </div>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    Engineered an intelligent job application automation pipeline that scrapes LinkedIn job postings, optimizes resumes using AI-powered analysis, and handles application submissions with human-in-the-loop review. The system uses web scraping for job discovery, LLM-based resume tailoring for each position, and automated form filling while maintaining quality through manual approval checkpoints. Integrated with tracking systems to monitor application status and follow-up reminders.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Selenium</span>
+                    <span class="tech-tag">LangChain</span>
+                    <span class="tech-tag">OpenAI API</span>
+                    <span class="tech-tag">Beautiful Soup</span>
+                    <span class="tech-tag">Agentic Workflows</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">MATLAB MCP Integration for Lab Demonstrations</div>
+                    </div>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    Developed MCP server enabling seamless MATLAB integration with Claude Desktop for teaching demonstrations. Allows Claude to execute MATLAB code, retrieve results, and provide interactive explanations during lab sessions. Implemented secure code execution environment with proper error handling and result formatting. Used extensively in Big Data, Intelligence & Analytics course for demonstrating data analysis workflows and algorithm implementations.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">MATLAB</span>
+                    <span class="tech-tag">MCP Protocol</span>
+                    <span class="tech-tag">Claude Desktop</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">Project ORBIT - Private Equity Dashboard</div>
+                    </div>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    Built comprehensive web scraping and analysis platform for Forbes AI 50 companies. Implemented complex architecture with OpenAI API integration, Selenium-based scraping, AWS S3 storage, and ChromaDB for vector storage. Created FastAPI endpoints for data access and automated collection of financial documents including quarterly earnings reports from Dow 30 companies' investor relations pages. Handled challenges with JavaScript-rendered content and bot detection mechanisms.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Selenium</span>
+                    <span class="tech-tag">OpenAI API</span>
+                    <span class="tech-tag">AWS S3</span>
+                    <span class="tech-tag">ChromaDB</span>
+                    <span class="tech-tag">FastAPI</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">scikit-learn</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MS SQL Server</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Oracle SQL</span>
+                        <span class="skill-tag">Redshift</span>
+                        <span class="skill-tag">Snowflake</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Big Data Technologies</h3>
+                    <div>
+                        <span class="skill-tag">Apache Spark</span>
+                        <span class="skill-tag">PySpark</span>
+                        <span class="skill-tag">Azure ADF</span>
+                        <span class="skill-tag">Data Lake</span>
+                        <span class="skill-tag">Databricks</span>
+                        <span class="skill-tag">Airflow</span>
+                        <span class="skill-tag">dbt</span>
+                        <span class="skill-tag">Delta Lake</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Cloud & Tools</h3>
+                    <div>
+                        <span class="skill-tag">AWS S3</span>
+                        <span class="skill-tag">Lambda</span>
+                        <span class="skill-tag">Glue</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Tableau</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>AI Engineering</h3>
+                    <div>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">LangGraph</span>
+                        <span class="skill-tag">MCP</span>
+                        <span class="skill-tag">OpenAI API</span>
+                        <span class="skill-tag">RAG Systems</span>
+                        <span class="skill-tag">Agentic Workflows</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Master of Science in Computer Software Engineering</div>
+                        <div class="card-subtitle">Northeastern University · Boston, MA</div>
+                    </div>
+                    <div class="card-date">Sept 2023 – Dec 2025</div>
+                </div>
+                <p style="color: var(--text-secondary); margin-top: 1rem;">
+                    <strong>GPA:</strong> 3.87/4.0
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Bachelor of Engineering in Electrical and Electronics Engineering</div>
+                        <div class="card-subtitle">BMS College of Engineering · Bangalore, India</div>
+                    </div>
+                    <div class="card-date">Sept 2016 – Aug 2020</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Pragnesh Anekal. Built with passion for data engineering and AI systems.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Boston, MA | Open to opportunities in Data Engineering and AI</p>
+        </div>
+    </footer>
+</body>
+</html>
