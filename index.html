@@ -19,7 +19,6 @@
     --paper-mute:#5a6783;
     --cyan:#7fd3ff;
     --cyan-soft:rgba(127,211,255,.14);
-    --warn:#ffb86b;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -239,21 +238,6 @@
   .progress i{position:absolute;left:0;top:0;bottom:0;background:var(--cyan)}
   .book-info .pct{font-size:10px;color:var(--paper-mute);letter-spacing:.06em}
 
-  /* Scoreboard */
-  .score{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;padding:14px 0;border-bottom:1px dashed var(--line-2)}
-  .team{font-family:"Newsreader",serif;font-size:18px}
-  .team .abbr{font-size:11px;color:var(--paper-mute);letter-spacing:.18em;font-family:"JetBrains Mono",monospace;margin-bottom:2px}
-  .team.right{text-align:right}
-  .pts{font-family:"JetBrains Mono",monospace;font-size:32px;font-weight:500;letter-spacing:-.02em;text-align:center}
-  .pts .win{color:var(--cyan)}
-  .vs{font-size:10px;color:var(--paper-mute);letter-spacing:.18em;text-align:center}
-  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px;font-size:10px;letter-spacing:.08em}
-  .stat{border:1px solid var(--line-2);padding:8px;text-align:center}
-  .stat .v{font-family:"Newsreader",serif;font-size:20px;color:var(--paper);display:block;margin-bottom:2px}
-  .stat .l{color:var(--paper-mute);text-transform:uppercase}
-
-  /* span 2 */
-  .span-2{grid-column:1/-1}
 
   /* ── WRITING ── */
   .writing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -574,14 +558,14 @@
       <span class="sec-num">§ 06</span>
       <h2 class="sec-title">Off-hours</h2>
       <span class="sec-rule"></span>
-      <span class="sec-sub">FIG. 06.A–C</span>
+      <span class="sec-sub">FIG. 06.A–B</span>
     </div>
 
     <div class="passions-grid">
 
       <!-- TRAVEL MAP -->
       <div class="panel reveal rd1">
-        <div class="panel-head"><span>FIG. 06.A — TRAVEL LOG</span><span>14 STAMPS · 4 CONTINENTS</span></div>
+        <div class="panel-head"><span>FIG. 06.A — TRAVEL LOG</span><span>BOSTON ↔ BANGALORE</span></div>
         <div class="map">
           <svg viewBox="0 0 800 380" preserveAspectRatio="none">
             <g fill="none" stroke="#26344f" stroke-width="1">
@@ -598,16 +582,11 @@
             <!-- Bangalore -->
             <circle cx="600" cy="180" r="4" fill="#7fd3ff"/>
             <circle cx="600" cy="180" r="9" fill="none" stroke="#7fd3ff"/>
-            <!-- Tokyo (target) -->
-            <circle cx="690" cy="135" r="3" fill="none" stroke="#ffb86b" stroke-dasharray="2 2"/>
-            <circle cx="690" cy="135" r="8" fill="none" stroke="#ffb86b" stroke-dasharray="2 2"/>
-            <!-- flight paths -->
-            <path d="M600 180 Q400 40 200 140" fill="none" stroke="#7fd3ff" stroke-width="1" stroke-dasharray="3 4"/>
-            <path d="M200 140 Q450 80 690 135" fill="none" stroke="#ffb86b" stroke-width="1" stroke-dasharray="3 4"/>
+            <!-- flight path Boston ↔ Bangalore -->
+            <path d="M200 140 Q400 40 600 180" fill="none" stroke="#7fd3ff" stroke-width="1" stroke-dasharray="3 4"/>
           </svg>
           <div class="pin-lbl" style="left:25%;top:37%">BOSTON · home</div>
           <div class="pin-lbl" style="left:75%;top:47%">BANGALORE · roots</div>
-          <div class="pin-lbl" style="left:86%;top:36%;border-color:var(--warn);color:var(--warn)">TOKYO · next</div>
         </div>
         <div class="spark">
           <span>FLIGHTS / YR</span>
@@ -651,38 +630,6 @@
         </div>
       </div>
 
-      <!-- GSW SCOREBOARD -->
-      <div class="panel span-2 reveal rd3">
-        <div class="panel-head"><span>FIG. 06.C — GS WARRIORS · LAST GAME</span><span class="live">● POST</span></div>
-        <div class="score">
-          <div class="team">
-            <div class="abbr">GSW · GOLDEN STATE</div>
-            <span style="color:var(--paper-mute);font-size:11px">28-19 · home</span>
-          </div>
-          <div>
-            <div class="pts"><span class="win">118</span> · 109</div>
-            <div class="vs">FINAL · Q4</div>
-          </div>
-          <div class="team right">
-            <div class="abbr">LAL · L.A. LAKERS</div>
-            <span style="color:var(--paper-mute);font-size:11px">25-22 · away</span>
-          </div>
-        </div>
-        <div class="stats-row">
-          <div class="stat"><span class="v">37</span><span class="l">Curry PTS</span></div>
-          <div class="stat"><span class="v">8</span><span class="l">Threes</span></div>
-          <div class="stat"><span class="v">11</span><span class="l">AST</span></div>
-          <div class="stat"><span class="v">+14</span><span class="l">+/&#8722;</span></div>
-        </div>
-        <div class="spark">
-          <span>SEASON W%</span>
-          <svg viewBox="0 0 400 28">
-            <polyline fill="none" stroke="#7fd3ff" stroke-width="1.2" points="0,18 25,14 50,16 75,10 100,12 125,8 150,11 175,7 200,9 225,5 250,7 275,9 300,5 325,3 350,6 375,4 400,2"/>
-          </svg>
-          <span>&#8593; .596</span>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -722,7 +669,7 @@
     <div class="row"><span class="out">"if it can be built, i want to build it."</span></div>
     <div class="row">
       <span class="pmt">~/portfolio $</span>
-      <input id="cmd" placeholder="try: help, contact, books, score, projects" autocomplete="off" spellcheck="false" />
+      <input id="cmd" placeholder="try: help, contact, books, projects" autocomplete="off" spellcheck="false" />
     </div>
     <div id="cmd-out"></div>
   </div>
@@ -770,11 +717,10 @@
     const cmd = document.getElementById('cmd');
     const out = document.getElementById('cmd-out');
     const responses = {
-      help:     'commands: help · whoami · contact · books · score · projects · clear',
+      help:     'commands: help · whoami · contact · books · projects · clear',
       whoami:   'pragnesh anekal — data engineer @ staples · boston, ma',
       contact:  'pragneshanekal@gmail.com · +1-617-396-1388',
       books:    'now: catch-22 (42%) · last: designing data-intensive applications ★★★★★',
-      score:    'GSW 118 · LAL 109 — curry 37p / 8x 3pt / 11a',
       projects: '001 · expense-tracking-agent (mcp + langgraph + notion + splitwise)',
       clear:    '__clear__'
     };
