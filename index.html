@@ -182,36 +182,29 @@
   }
   .node .source:hover{color:var(--paper)}
 
-  /* project detail / screenshot gallery */
-  .detail-panel{
-    margin-top:28px;border:1px solid var(--line-2);padding:20px;
-    position:relative;background:rgba(13,19,32,.4);
-  }
-  .detail-panel .dp-head{
+  /* project node with inline sneak-peek screenshot */
+  .node.has-peek{display:grid;grid-template-columns:1fr 170px;gap:24px;align-items:start}
+  .node.has-peek .node-body{min-width:0}
+  .peek{display:flex;flex-direction:column;gap:8px;position:relative}
+  .peek .peek-tag{
+    font-size:9.5px;letter-spacing:.16em;color:var(--cyan);
     display:flex;justify-content:space-between;align-items:baseline;
-    font-size:10px;letter-spacing:.18em;color:var(--paper-mute);
-    margin-bottom:16px;border-bottom:1px dashed var(--line-2);padding-bottom:10px;
   }
-  .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-  .shot{
-    display:flex;flex-direction:column;gap:8px;
-    position:relative;transition:transform .25s;
-  }
-  .shot:hover{transform:translateY(-3px)}
-  .shot .frame{
+  .peek .peek-tag span:last-child{color:var(--paper-mute)}
+  .peek .frame{
     border:1px solid var(--line-2);background:#000;
     aspect-ratio:9/19.5;overflow:hidden;position:relative;
     transition:border-color .2s;
   }
-  .shot:hover .frame{border-color:var(--cyan)}
-  .shot img{width:100%;height:100%;object-fit:cover;display:block}
-  .shot .cap{
-    font-size:10px;letter-spacing:.14em;color:var(--paper-mute);
-    text-align:center;
+  .node.has-peek:hover .peek .frame{border-color:var(--cyan)}
+  .peek img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  .peek .cap{
+    font-size:9.5px;letter-spacing:.14em;color:var(--paper-mute);
+    text-align:center;font-family:"JetBrains Mono",monospace;
   }
-  .shot .cap b{color:var(--paper);font-weight:500;font-family:"JetBrains Mono",monospace}
   @media (max-width:760px){
-    .shots{grid-template-columns:repeat(2,1fr)}
+    .node.has-peek{grid-template-columns:1fr}
+    .node.has-peek .peek{max-width:180px;margin:4px auto 0}
   }
 
   /* ── SKILLS ── */
@@ -509,48 +502,30 @@
           <span>splitwise</span>
         </div>
       </div>
-      <div class="node reveal rd2">
-        <span class="pin">002</span>
-        <h3>AdaptiveDailyOS</h3>
-        <p>iOS app that acts as a personal AI coach — you log what actually happened each day, and a Sunday planner agent rolls it up, sets next week's targets, and adapts the plan as reality drifts.</p>
-        <div class="pipe">
-          <span>log progress</span><span class="arr">→</span>
-          <span>sunday planner</span><span class="arr">→</span>
-          <span>weekly targets</span><span class="arr">→</span>
-          <span>adapt</span>
+      <div class="node has-peek reveal rd2">
+        <div class="node-body">
+          <span class="pin">002</span>
+          <h3>AdaptiveDailyOS</h3>
+          <p>iOS app that acts as a personal AI coach — you log what actually happened each day, and a Sunday planner agent rolls it up, sets next week's targets, and adapts the plan as reality drifts.</p>
+          <div class="pipe">
+            <span>log progress</span><span class="arr">→</span>
+            <span>sunday planner</span><span class="arr">→</span>
+            <span>weekly targets</span><span class="arr">→</span>
+            <span>adapt</span>
+          </div>
+          <a class="source" href="https://github.com/pragneshanekal/AdaptiveDailyOS" target="_blank" rel="noopener">→ github.com/pragneshanekal/AdaptiveDailyOS</a>
         </div>
-        <a class="source" href="https://github.com/pragneshanekal/AdaptiveDailyOS" target="_blank" rel="noopener">→ github.com/pragneshanekal/AdaptiveDailyOS</a>
+        <div class="peek">
+          <div class="peek-tag"><span>// SNEAK PEEK</span><span>FIG. 03.A</span></div>
+          <div class="frame"><img src="https://raw.githubusercontent.com/pragneshanekal/AdaptiveDailyOS/main/docs/screenshots/plan-details.png" alt="AdaptiveDailyOS — AI-generated plan details" loading="lazy"></div>
+          <span class="cap">plan · ai-generated</span>
+        </div>
       </div>
       <div class="node dashed reveal rd3">
         <span class="pin" style="background:var(--line-2);color:var(--paper-mute)">WIP</span>
         <h3>More projects shipping soon</h3>
         <p>I'm always tinkering. New nodes will appear here as they ship.</p>
         <div class="pipe"><span>tbd</span><span class="arr">→</span><span>tbd</span></div>
-      </div>
-    </div>
-
-    <div class="detail-panel reveal">
-      <div class="dp-head">
-        <span>FIG. 03.A — ADAPTIVEDAILYOS · UI</span>
-        <span>4 FRAMES · iOS</span>
-      </div>
-      <div class="shots">
-        <div class="shot">
-          <div class="frame"><img src="https://raw.githubusercontent.com/pragneshanekal/AdaptiveDailyOS/main/docs/screenshots/today.png" alt="Today view" loading="lazy"></div>
-          <span class="cap"><b>today</b> · daily log</span>
-        </div>
-        <div class="shot">
-          <div class="frame"><img src="https://raw.githubusercontent.com/pragneshanekal/AdaptiveDailyOS/main/docs/screenshots/plan-details.png" alt="Plan details" loading="lazy"></div>
-          <span class="cap"><b>plan</b> · weekly targets</span>
-        </div>
-        <div class="shot">
-          <div class="frame"><img src="https://raw.githubusercontent.com/pragneshanekal/AdaptiveDailyOS/main/docs/screenshots/habits.png" alt="Habits" loading="lazy"></div>
-          <span class="cap"><b>habits</b> · streaks</span>
-        </div>
-        <div class="shot">
-          <div class="frame"><img src="https://raw.githubusercontent.com/pragneshanekal/AdaptiveDailyOS/main/docs/screenshots/progress.png" alt="Progress" loading="lazy"></div>
-          <span class="cap"><b>progress</b> · adapt</span>
-        </div>
       </div>
     </div>
   </section>
